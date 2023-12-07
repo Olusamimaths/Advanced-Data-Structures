@@ -69,8 +69,19 @@ def main():
     list.insert_at_end(14)
     list.insert_at_end(9)
     list.insert_at_end(11)
-
     print("After insertion: ")
+    list.print_list()
+
+    print(f"Inserting after key {11}: ")
+    list.insert_after_key(110, 11)
+    list.print_list()
+
+    print(f"Inserting after key {2}: ")
+    list.insert_after_key(20, 2)
+    list.print_list()
+
+    print(f"Inserting after key {0}: ")
+    list.insert_after_key(99, 0)
     list.print_list()
 
 
