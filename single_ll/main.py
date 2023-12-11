@@ -54,6 +54,50 @@ class LinkedList:
             new_node.next = ptr.next
             ptr.next = new_node
 
+    def delete_in_front(self):
+        if self.head is None:
+            print("Empty list, can't delete")
+            return
+
+        ptr = self.head
+        temp = ptr.next
+        self.head = temp
+
+    def delete_at_end(self):
+        if self.head is None:
+            print("Empty list, can't delete")
+            return
+
+        tail = self.head
+        node_before_tail = tail
+
+        while tail.next:
+            node_before_tail = tail
+            tail = tail.next
+
+        node_before_tail.next = None
+
+    def delete_at_key(self, key):
+        if self.head is None:
+            print("Empty list, can't delete")
+            return
+
+        key_node = self.head
+        node_before_key = key_node
+
+        while key_node:
+            if key_node.data != key:
+                node_before_key = key_node
+                key_node = key_node.next
+            else:
+                node_before_key.next = key_node.next
+                return
+
+        if key_node is None:
+            print(f"Node with key: {key} not found")
+            return
+        node_before_key.next = key_node.next
+
 
 def main():
     list = LinkedList()
@@ -82,6 +126,23 @@ def main():
 
     print(f"Inserting after key {0}: ")
     list.insert_after_key(99, 0)
+    list.print_list()
+
+    print("\n")
+    print("Deleting in front")
+    list.delete_in_front()
+    list.print_list()
+
+    print("Deleting at tail")
+    list.delete_at_end()
+    list.print_list()
+
+    print(f"Deleting after key: {14} ")
+    list.delete_at_key(14)
+    list.print_list()
+
+    print(f"Deleting after key: {14} ")
+    list.delete_at_key(14)
     list.print_list()
 
 
