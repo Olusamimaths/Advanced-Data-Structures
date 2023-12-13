@@ -98,6 +98,18 @@ class LinkedList:
             return
         node_before_key.next = key_node.next
 
+    def find_key(self, key):
+        if self.head is None:
+            print("Empty list, can't find key")
+            return False
+
+        ptr = self.head
+        while ptr:
+            if ptr.data == key:
+                return True
+            ptr = ptr.next
+        return False
+
 
 def main():
     list = LinkedList()
@@ -144,6 +156,9 @@ def main():
     print(f"Deleting after key: {14} ")
     list.delete_at_key(14)
     list.print_list()
+
+    print(list.find_key(99))
+    print(list.find_key(199))
 
 
 main()
